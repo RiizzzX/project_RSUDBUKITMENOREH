@@ -1,0 +1,140 @@
+<div class="content-section">
+    <h1 class="section-title">Laporan</h1>
+    
+    <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
+        <h2 style="margin-top: 0; margin-bottom: 1.5rem; color: #2c3e50; font-size: 18px;">Filter Laporan</h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="form-group">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 14px;">Tipe Laporan</label>
+                <select style="width: 100%; padding: 0.75rem; border: 1px solid #bdc3c7; border-radius: 4px;">
+                    <option>Pilih Tipe Laporan</option>
+                    <option>Laporan Antrian</option>
+                    <option>Laporan Farmasi</option>
+                    <option>Laporan Pasien</option>
+                    <option>Laporan Harian</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 14px;">Dari Tanggal</label>
+                <input type="date" style="width: 100%; padding: 0.75rem; border: 1px solid #bdc3c7; border-radius: 4px;">
+            </div>
+            
+            <div class="form-group">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 14px;">Sampai Tanggal</label>
+                <input type="date" style="width: 100%; padding: 0.75rem; border: 1px solid #bdc3c7; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 1rem;">
+            <button class="btn btn-primary">📊 Lihat Laporan</button>
+            <button class="btn btn-secondary">⬇️ Export PDF</button>
+            <button class="btn btn-secondary">📄 Export Excel</button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-top: 0; margin-bottom: 1.5rem; color: #2c3e50; font-size: 18px;">Statistik Umum</h2>
+        
+        <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+            <div style="padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #3498db; margin-bottom: 0.5rem;">156</div>
+                <div style="font-size: 13px; color: #7f8c8d; font-weight: 500;">Total Antrian</div>
+            </div>
+            
+            <div style="padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #27ae60; margin-bottom: 0.5rem;">142</div>
+                <div style="font-size: 13px; color: #7f8c8d; font-weight: 500;">Selesai</div>
+            </div>
+            
+            <div style="padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #f39c12; margin-bottom: 0.5rem;">12</div>
+                <div style="font-size: 13px; color: #7f8c8d; font-weight: 500;">Menunggu</div>
+            </div>
+            
+            <div style="padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #e74c3c; margin-bottom: 0.5rem;">2</div>
+                <div style="font-size: 13px; color: #7f8c8d; font-weight: 500;">Urgent</div>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: #2c3e50; font-size: 16px;">Ringkasan Harian (15 Januari 2026)</h3>
+        
+        <div style="overflow-x: auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Jam</th>
+                        <th>Total Antrian</th>
+                        <th>Selesai</th>
+                        <th>Menunggu</th>
+                        <th>Rata-rata Waktu (menit)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>08:00 - 09:00</strong></td>
+                        <td>12</td>
+                        <td>11</td>
+                        <td>1</td>
+                        <td>8.5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>09:00 - 10:00</strong></td>
+                        <td>18</td>
+                        <td>17</td>
+                        <td>1</td>
+                        <td>10.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10:00 - 11:00</strong></td>
+                        <td>22</td>
+                        <td>19</td>
+                        <td>3</td>
+                        <td>12.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>11:00 - 12:00</strong></td>
+                        <td>28</td>
+                        <td>25</td>
+                        <td>3</td>
+                        <td>11.8</td>
+                    </tr>
+                    <tr>
+                        <td><strong>12:00 - 13:00</strong></td>
+                        <td>25</td>
+                        <td>24</td>
+                        <td>1</td>
+                        <td>9.4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>13:00 - 14:00</strong></td>
+                        <td>19</td>
+                        <td>18</td>
+                        <td>1</td>
+                        <td>7.8</td>
+                    </tr>
+                    <tr>
+                        <td><strong>14:00 - 15:00</strong></td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>0</td>
+                        <td>6.9</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log('Laporan page loaded');
+    
+    // Add event listeners untuk filter
+    document.querySelectorAll('select, input[type="date"]').forEach(el => {
+        el.addEventListener('change', function() {
+            console.log('Filter changed:', this.value);
+        });
+    });
+</script>

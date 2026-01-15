@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+// Load Phalcon polyfill if extension not available
+if (!extension_loaded('phalcon')) {
+    require_once dirname(__DIR__) . '/app/config/phalcon-polyfill.php';
+}
+
 use Phalcon\Di\FactoryDefault;
 
 error_reporting(E_ALL);

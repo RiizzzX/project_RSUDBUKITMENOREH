@@ -1,0 +1,118 @@
+<?php
+/* ANTRIAN DISPLAY VIEW - Modern Design */
+?>
+
+<div class="antrian-container">
+    <!-- LEFT SIDE - ANTRIAN SECTION -->
+    <div class="farmasi-section">
+        <div class="farmasi-card">
+            <div class="farmasi-header">ANTRIAN PENDAFTARAN</div>
+            <div class="farmasi-title">Nomor Saat Ini</div>
+            
+            <div class="antrian-number-display">
+                <div class="antrian-number" id="currentNumber">A-012</div>
+            </div>
+            
+            <div class="farmasi-footer">Silakan menuju loket pendaftaran</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">5</div>
+                <div class="stat-label">Menunggu</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total Hari Ini</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RIGHT SIDE - ANTRIAN LIST -->
+    <div class="antrian-list-section">
+        <div class="antrian-list-header">
+            <h2>Daftar Antrian Pendaftaran</h2>
+            <div class="antrian-count">Sisa Antrian: 5</div>
+        </div>
+        
+        <div class="antrian-list" id="queueList">
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-008</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Rini Kusuma</div>
+                    <div class="antrian-item-time">10:45</div>
+                    <div class="antrian-item-medicines">Pendaftaran Baru</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-completed">Selesai</button>
+                </div>
+            </div>
+            
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-009</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Bambang Sugito</div>
+                    <div class="antrian-item-time">10:50</div>
+                    <div class="antrian-item-medicines">Pemeriksaan Ulang</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-completed">Selesai</button>
+                </div>
+            </div>
+            
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-010</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Sinta Rahma</div>
+                    <div class="antrian-item-time">11:00</div>
+                    <div class="antrian-item-medicines">Pendaftaran Baru</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-completed">Selesai</button>
+                </div>
+            </div>
+            
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-011</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Hendra Wijaya</div>
+                    <div class="antrian-item-time">11:10</div>
+                    <div class="antrian-item-medicines">Pendaftaran Baru</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-ready">Sedang Diproses</button>
+                </div>
+            </div>
+            
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-012</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Endang Sudaryani</div>
+                    <div class="antrian-item-time">11:15</div>
+                    <div class="antrian-item-medicines">Pendaftaran Baru</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="antrian-footer-message">
+            Harap menunggu nomor antrian Anda dipanggil!
+        </div>
+    </div>
+</div>
+
+<script>
+    // Auto-update nomor antrian setiap beberapa detik (simulasi)
+    let queueNumbers = ['A-008', 'A-009', 'A-010', 'A-011', 'A-012'];
+    let currentIndex = 0;
+    
+    // Uncomment untuk auto-rotate nomor antrian
+    // setInterval(() => {
+    //     currentIndex = (currentIndex + 1) % queueNumbers.length;
+    //     document.querySelector('#currentNumber').textContent = queueNumbers[currentIndex];
+    // }, 10000);
+</script>

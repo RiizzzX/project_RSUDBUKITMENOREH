@@ -1,0 +1,50 @@
+# Docker & Phalcon Project
+.git
+.gitignore
+.env.example
+.env.local
+.DS_Store
+Thumbs.db
+*.log
+.vscode
+.idea
+
+# Laravel/PHP
+vendor/
+node_modules/
+composer.lock
+npm-debug.log
+yarn-error.log
+
+# Cache & Temp
+cache/*
+public/temp/*
+.cache
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Database
+*.sql
+db_data/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

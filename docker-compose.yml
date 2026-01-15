@@ -1,0 +1,59 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.simple
+    container_name: rsud_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - PHP_ENV=development
+      - DB_HOST=db
+      - DB_NAME=rsud_db
+      - DB_USER=rsud_user
+      - DB_PASS=rsud_password
+    depends_on:
+      - db
+    networks:
+      - rsud_network
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: rsud_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rsud_db
+      MYSQL_USER: rsud_user
+      MYSQL_PASSWORD: rsud_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - rsud_network
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: rsud_phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: rsud_user
+      PMA_PASSWORD: rsud_password
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - rsud_network
+    restart: unless-stopped
+
+networks:
+  rsud_network:
+    driver: bridge
+
+volumes:
+  mysql_data:

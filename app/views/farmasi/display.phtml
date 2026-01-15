@@ -1,3 +1,7 @@
+<?php
+/* FARMASI DISPLAY VIEW - Modern Design */
+?>
+
 <div class="antrian-container">
     <!-- LEFT SIDE - FARMASI SECTION -->
     <div class="farmasi-section">
@@ -6,7 +10,7 @@
             <div class="farmasi-title">Nomor Antrian Sekarang</div>
             
             <div class="antrian-number-display">
-                <div class="antrian-number">A-012</div>
+                <div class="antrian-number" id="currentPharmacyNumber">A-012</div>
             </div>
             
             <div class="farmasi-footer">Silakan menuju loket farmasi</div>
@@ -20,7 +24,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">📋</div>
-                <div class="stat-number">4</div>
+                <div class="stat-number">8</div>
                 <div class="stat-label">Total Hari Ini</div>
             </div>
         </div>
@@ -29,11 +33,35 @@
     <!-- RIGHT SIDE - ANTRIAN LIST -->
     <div class="antrian-list-section">
         <div class="antrian-list-header">
-            <h2>Daftar Antrian</h2>
+            <h2>Daftar Antrian Farmasi</h2>
             <div class="antrian-count">Sisa Antrian: 3</div>
         </div>
         
-        <div class="antrian-list">
+        <div class="antrian-list" id="pharmacyQueueList">
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-010</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Suryadi Santoso</div>
+                    <div class="antrian-item-time">11:00</div>
+                    <div class="antrian-item-medicines">4 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-completed">Selesai</button>
+                </div>
+            </div>
+            
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-011</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Eka Permata Sari</div>
+                    <div class="antrian-item-time">11:10</div>
+                    <div class="antrian-item-medicines">2 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-completed">Selesai</button>
+                </div>
+            </div>
+            
             <div class="antrian-item">
                 <div class="antrian-item-number">A-012</div>
                 <div class="antrian-item-info">
@@ -69,18 +97,6 @@
                     <button class="status-btn status-waiting">Menunggu</button>
                 </div>
             </div>
-            
-            <div class="antrian-item">
-                <div class="antrian-item-number">A-015</div>
-                <div class="antrian-item-info">
-                    <div class="antrian-item-name">Dewi Lestari</div>
-                    <div class="antrian-item-time">11:35</div>
-                    <div class="antrian-item-medicines">4 item obat</div>
-                </div>
-                <div class="antrian-item-status">
-                    <button class="status-btn status-waiting">Menunggu</button>
-                </div>
-            </div>
         </div>
         
         <div class="antrian-footer-message">
@@ -90,13 +106,13 @@
 </div>
 
 <script>
-    // Auto-update nomor antrian setiap beberapa detik (simulation)
-    let queueNumbers = ['A-012', 'A-013', 'A-014', 'A-015'];
-    let currentIndex = 0;
+    // Auto-update nomor antrian setiap beberapa detik (simulasi)
+    let pharmacyQueueNumbers = ['A-010', 'A-011', 'A-012', 'A-013', 'A-014'];
+    let pharmacyCurrentIndex = 0;
     
     // Uncomment untuk auto-rotate nomor antrian
     // setInterval(() => {
-    //     currentIndex = (currentIndex + 1) % queueNumbers.length;
-    //     document.querySelector('.antrian-number').textContent = queueNumbers[currentIndex];
+    //     pharmacyCurrentIndex = (pharmacyCurrentIndex + 1) % pharmacyQueueNumbers.length;
+    //     document.querySelector('#currentPharmacyNumber').textContent = pharmacyQueueNumbers[pharmacyCurrentIndex];
     // }, 10000);
 </script>
