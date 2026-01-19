@@ -37,7 +37,7 @@
             <div class="antrian-count">Sisa Antrian: 12</div>
         </div>
         
-        <div class="antrian-list">
+        <div class="antrian-list" id="antrianListContainer">
             <div class="antrian-item">
                 <div class="antrian-item-number">A-012</div>
                 <div class="antrian-item-info">
@@ -185,26 +185,6 @@
     </div>
 </div>
 
-<script>
-    // Auto-scroll dengan langsung balik ke atas
-    document.addEventListener('DOMContentLoaded', function() {
-        const antrianList = document.querySelector('.antrian-list');
-        
-        if (!antrianList) return;
-        
-        let scrollPos = 0;
-        const scrollSpeed = 1.5;
-        
-        setInterval(() => {
-            scrollPos += scrollSpeed;
-            const maxScroll = antrianList.scrollHeight - antrianList.clientHeight;
-            
-            // Jika sudah mentok, langsung balik ke atas (instant)
-            if (scrollPos >= maxScroll) {
-                scrollPos = 0;
-            }
-            
-            antrianList.scrollTop = scrollPos;
-        }, 50);
-    });
-</script>
+<div class="antrian-list-footer">
+    Kami siap melayani anda dengan sepenuh hati
+</div>

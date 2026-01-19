@@ -404,6 +404,7 @@ body {
   height: calc(100vh - 100px);
   overflow: hidden;
   box-sizing: border-box;
+  align-items: flex-start;
 }
 
 .farmasi-section {
@@ -499,7 +500,6 @@ body {
   font-size: 13px;
   color: #7f8c8d;
   font-weight: 500;
-}
   font-size: 36px;
   font-weight: 800;
   color: #2c3e50;
@@ -523,6 +523,9 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+  height: fit-content;
+  max-height: calc(100vh - 140px);
+  margin-bottom: 56px;
 }
 
 .antrian-list-header {
@@ -555,7 +558,7 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
-  overflow-y: hidden;
+  overflow: hidden;
   padding-right: 0;
   max-height: 100%;
 }
@@ -589,6 +592,8 @@ body {
   transition: var(--transition);
   box-shadow: none;
   flex-shrink: 0;
+  min-width: 0;
+  width: 100%;
 }
 
 .antrian-item:hover {
@@ -609,6 +614,7 @@ body {
 
 .antrian-item-info {
   flex: 1;
+  min-width: 0;
 }
 
 .antrian-item-name {
@@ -633,6 +639,23 @@ body {
 
 .antrian-item-status {
   flex: 0 0 auto;
+}
+
+.antrian-list-footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  text-align: center;
+  padding: 0.8rem 2rem;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
 }
 
 .status-btn {

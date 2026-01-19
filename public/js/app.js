@@ -4,11 +4,14 @@
 
 class UIController {
   constructor() {
+    this.scrollSpeed = 1; // pixels per frame
+    this.isScrolling = false;
     this.init();
   }
 
   init() {
     this.setupDateTime();
+    this.setupAutoScroll();
   }
 
   setupDateTime() {
@@ -32,6 +35,36 @@ class UIController {
     if (element) {
       element.textContent = formatted;
     }
+  }
+
+  setupAutoScroll() {
+    const antrianList = document.getElementById('antrianListContainer');
+    if (!antrianList) return;
+
+    let currentScroll = 0;
+    const scrollSpeed = 0.8; // pixels per frame - lebih slow
+    let isAtBottom = false;
+
+    const performScroll = () => {
+      const maxScroll = antrianList.scrollHeight - antrianList.clientHeight;
+      
+      if (currentScroll >= maxScroll) {
+        // Reset to top
+        currentScroll = 0;
+        antrianList.scrollTop = 0;
+      } else {
+        currentScroll += scrollSpeed;
+        antrianList.scrollTop = currentScroll;
+      }
+
+      // Continue scrolling
+      requestAnimationFrame(performScroll);
+    };
+
+    // Wait a bit before starting scroll for page stability
+    setTimeout(() => {
+      requestAnimationFrame(performScroll);
+    }, 500);
   }
 }
 
