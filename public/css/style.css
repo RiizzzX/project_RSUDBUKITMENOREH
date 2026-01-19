@@ -523,8 +523,8 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  height: fit-content;
-  max-height: calc(100vh - 140px);
+  height: auto;
+  max-height: calc(100vh - 245px);
   margin-bottom: 56px;
 }
 
