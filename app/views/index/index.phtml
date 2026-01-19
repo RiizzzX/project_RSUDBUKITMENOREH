@@ -12,7 +12,7 @@
             <div class="farmasi-footer">Silakan menuju loket farmasi</div>
         </div>
         
-        <div class="stats-grid">
+        <div class="antrian-stats-section">
             <div class="stat-card">
                 <div class="stat-icon">👥</div>
                 <div class="stat-number">3</div>
@@ -20,9 +20,13 @@
             </div>
             <div class="stat-card">
                 <div class="stat-icon">📋</div>
-                <div class="stat-number">4</div>
+                <div class="stat-number">12</div>
                 <div class="stat-label">Total Hari Ini</div>
             </div>
+        </div>
+        
+        <div class="info-marquee">
+            <p>⚠️ Harap menunggu nomor antrian Anda dipanggil • Periksa status antrian melalui layar • Lapor ke petugas jika ada pertanyaan</p>
         </div>
     </div>
     
@@ -30,7 +34,7 @@
     <div class="antrian-list-section">
         <div class="antrian-list-header">
             <h2>Daftar Antrian</h2>
-            <div class="antrian-count">Sisa Antrian: 3</div>
+            <div class="antrian-count">Sisa Antrian: 12</div>
         </div>
         
         <div class="antrian-list">
@@ -81,22 +85,126 @@
                     <button class="status-btn status-waiting">Menunggu</button>
                 </div>
             </div>
-        </div>
-        
-        <div class="antrian-footer-message">
-            Harap menunggu nomor antrian Anda dipanggil!
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-016</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Rudi Hermawan</div>
+                    <div class="antrian-item-time">11:37</div>
+                    <div class="antrian-item-medicines">2 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-017</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Rina Kusuma</div>
+                    <div class="antrian-item-time">11:39</div>
+                    <div class="antrian-item-medicines">6 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-018</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Hendra Wijaya</div>
+                    <div class="antrian-item-time">11:41</div>
+                    <div class="antrian-item-medicines">3 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-019</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Lena Suwarni</div>
+                    <div class="antrian-item-time">11:43</div>
+                    <div class="antrian-item-medicines">4 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-020</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Bambang Sutrisno</div>
+                    <div class="antrian-item-time">11:45</div>
+                    <div class="antrian-item-medicines">2 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-021</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Maya Puspita</div>
+                    <div class="antrian-item-time">11:47</div>
+                    <div class="antrian-item-medicines">5 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-022</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Teguh Irawan</div>
+                    <div class="antrian-item-time">11:49</div>
+                    <div class="antrian-item-medicines">3 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
+
+            <div class="antrian-item">
+                <div class="antrian-item-number">A-023</div>
+                <div class="antrian-item-info">
+                    <div class="antrian-item-name">Susi Rahayu</div>
+                    <div class="antrian-item-time">11:51</div>
+                    <div class="antrian-item-medicines">7 item obat</div>
+                </div>
+                <div class="antrian-item-status">
+                    <button class="status-btn status-waiting">Menunggu</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Auto-update nomor antrian setiap beberapa detik (simulation)
-    let queueNumbers = ['A-012', 'A-013', 'A-014', 'A-015'];
-    let currentIndex = 0;
-    
-    // Uncomment untuk auto-rotate nomor antrian
-    // setInterval(() => {
-    //     currentIndex = (currentIndex + 1) % queueNumbers.length;
-    //     document.querySelector('.antrian-number').textContent = queueNumbers[currentIndex];
-    // }, 10000);
+    // Auto-scroll dengan langsung balik ke atas
+    document.addEventListener('DOMContentLoaded', function() {
+        const antrianList = document.querySelector('.antrian-list');
+        
+        if (!antrianList) return;
+        
+        let scrollPos = 0;
+        const scrollSpeed = 1.5;
+        
+        setInterval(() => {
+            scrollPos += scrollSpeed;
+            const maxScroll = antrianList.scrollHeight - antrianList.clientHeight;
+            
+            // Jika sudah mentok, langsung balik ke atas (instant)
+            if (scrollPos >= maxScroll) {
+                scrollPos = 0;
+            }
+            
+            antrianList.scrollTop = scrollPos;
+        }, 50);
+    });
 </script>
