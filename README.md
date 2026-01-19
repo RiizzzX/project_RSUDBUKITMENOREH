@@ -32,14 +32,14 @@ docker-compose up -d
 ```
 
 Services akan berjalan di:
-- **Web**: http://localhost:8080
+- **Web**: http://localhost:8082
 - **MySQL**: localhost:3306
 - **PHPMyAdmin**: http://localhost:8081
 
 ### 3. Akses Aplikasi
 
 ```
-http://localhost:8080/
+http://localhost:8082/
 ```
 
 ## VS Code Remote Development
@@ -213,7 +213,7 @@ server {
     server_name rsud.example.com;
     
     location / {
-        proxy_pass http://localhost:8080;
+        proxy_pass http://localhost:8082;
         proxy_set_header Host $host;
     }
 }
