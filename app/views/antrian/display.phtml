@@ -28,6 +28,13 @@
                 <div class="stat-label">Total Hari Ini</div>
             </div>
         </div>
+        
+        <!-- RUNNING TEXT -->
+        <div class="running-text-container">
+            <div class="running-text">
+                <span>🏥 Selamat datang di RSUD Bukit Menoreh • Mohon menunggu nomor antrian Anda dipanggil • Terima kasih atas kesabaran Anda • Kami siap melayani dengan sepenuh hati 🏥</span>
+            </div>
+        </div>
     </div>
     
     <!-- RIGHT SIDE - ANTRIAN LIST -->
@@ -109,6 +116,63 @@
     // Auto-update nomor antrian setiap beberapa detik (simulasi)
     let queueNumbers = ['A-008', 'A-009', 'A-010', 'A-011', 'A-012'];
     let currentIndex = 0;
+    
+    // ===== AUTO SCROLL SMOOTH HANYA KEBAWAH TERUS-MENERUS =====
+    function autoScrollQueue() {
+        const queueList = document.getElementById('queueList');
+        if (!queueList) return;
+        
+        // Disable manual scroll
+        queueList.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+        queueList.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        
+        // Buat wrapper untuk smooth scroll
+        const items = queueList.innerHTML;
+        queueList.innerHTML = '<div class="scroll-content" id="scrollContent">' + items + '</div>';
+        
+        const scrollContent = document.getElementById('scrollContent');
+        scrollContent.style.transition = 'transform 0.05s linear';
+        
+        let scrollPos = 0;
+        const scrollSpeed = 1.5; // pixel per frame (dipercepat)
+        let isPaused = false;
+        
+        function scroll() {
+            if (isPaused) {
+                requestAnimationFrame(scroll);
+                return;
+            }
+            
+            const maxScroll = scrollContent.offsetHeight - queueList.offsetHeight;
+            
+            if (maxScroll <= 0) {
+                requestAnimationFrame(scroll);
+                return;
+            }
+            
+            scrollPos += scrollSpeed;
+            
+            // Jika sudah di bawah, langsung reset ke awal
+            if (scrollPos >= maxScroll) {
+                scrollPos = 0;
+                scrollContent.style.transition = 'none'; // instant reset
+                scrollContent.style.transform = 'translateY(0)';
+                
+                // Tunggu sebentar baru mulai lagi dengan smooth transition
+                setTimeout(() => {
+                    scrollContent.style.transition = 'transform 0.05s linear';
+                }, 50);
+            }
+            
+            scrollContent.style.transform = 'translateY(-' + scrollPos + 'px)';
+            requestAnimationFrame(scroll);
+        }
+        
+        requestAnimationFrame(scroll);
+    }
+    
+    // Start auto scroll when page loads
+    document.addEventListener('DOMContentLoaded', autoScrollQueue);
     
     // Uncomment untuk auto-rotate nomor antrian
     // setInterval(() => {

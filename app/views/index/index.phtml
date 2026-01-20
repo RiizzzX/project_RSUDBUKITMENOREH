@@ -6,13 +6,13 @@
             <div class="farmasi-title">Nomor Antrian Sekarang</div>
             
             <div class="antrian-number-display">
-                <div class="antrian-number">A-012</div>
+                <div class="antrian-number" id="currentNumber">A-012</div>
             </div>
             
             <div class="farmasi-footer">Silakan menuju loket farmasi</div>
         </div>
         
-        <div class="antrian-stats-section">
+        <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon">👥</div>
                 <div class="stat-number">3</div>
@@ -25,8 +25,11 @@
             </div>
         </div>
         
-        <div class="info-marquee">
-            <p>⚠️ Harap menunggu nomor antrian Anda dipanggil • Periksa status antrian melalui layar • Lapor ke petugas jika ada pertanyaan</p>
+        <!-- RUNNING TEXT -->
+        <div class="running-text-container">
+            <div class="running-text">
+                <span>🏥 Selamat datang di RSUD Bukit Menoreh • Mohon menunggu nomor antrian Anda dipanggil • Terima kasih atas kesabaran Anda • Kami siap melayani dengan sepenuh hati 🏥</span>
+            </div>
         </div>
     </div>
     
@@ -37,7 +40,7 @@
             <div class="antrian-count">Sisa Antrian: 12</div>
         </div>
         
-        <div class="antrian-list">
+        <div class="antrian-list" id="queueList">
             <div class="antrian-item">
                 <div class="antrian-item-number">A-012</div>
                 <div class="antrian-item-info">
@@ -186,25 +189,60 @@
 </div>
 
 <script>
-    // Auto-scroll dengan langsung balik ke atas
-    document.addEventListener('DOMContentLoaded', function() {
-        const antrianList = document.querySelector('.antrian-list');
+    // ===== AUTO SCROLL SMOOTH HANYA KEBAWAH TERUS-MENERUS =====
+    function autoScrollQueue() {
+        const queueList = document.getElementById('queueList');
+        if (!queueList) return;
         
-        if (!antrianList) return;
+        // Disable manual scroll
+        queueList.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+        queueList.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        
+        // Buat wrapper untuk smooth scroll
+        const items = queueList.innerHTML;
+        queueList.innerHTML = '<div class="scroll-content" id="scrollContent">' + items + '</div>';
+        
+        const scrollContent = document.getElementById('scrollContent');
+        scrollContent.style.transition = 'transform 0.05s linear';
         
         let scrollPos = 0;
-        const scrollSpeed = 1.5;
+        const scrollSpeed = 1.5; // pixel per frame (dipercepat)
+        let isPaused = false;
         
-        setInterval(() => {
-            scrollPos += scrollSpeed;
-            const maxScroll = antrianList.scrollHeight - antrianList.clientHeight;
-            
-            // Jika sudah mentok, langsung balik ke atas (instant)
-            if (scrollPos >= maxScroll) {
-                scrollPos = 0;
+        function scroll() {
+            if (isPaused) {
+                requestAnimationFrame(scroll);
+                return;
             }
             
-            antrianList.scrollTop = scrollPos;
-        }, 50);
-    });
+            const maxScroll = scrollContent.offsetHeight - queueList.offsetHeight;
+            
+            if (maxScroll <= 0) {
+                requestAnimationFrame(scroll);
+                return;
+            }
+            
+            scrollPos += scrollSpeed;
+            
+            // Jika sudah di bawah, langsung reset ke awal
+            if (scrollPos >= maxScroll) {
+                scrollPos = 0;
+                scrollContent.style.transition = 'none'; // instant reset
+                scrollContent.style.transform = 'translateY(0)';
+                
+                // Tunggu sebentar baru mulai lagi dengan smooth transition
+                setTimeout(() => {
+                    scrollContent.style.transition = 'transform 0.05s linear';
+                }, 50);
+            }
+            
+            scrollContent.style.transform = 'translateY(-' + scrollPos + 'px)';
+            requestAnimationFrame(scroll);
+        }
+        
+        requestAnimationFrame(scroll);
+    }
+    
+    // Start auto scroll when page loads
+    document.addEventListener('DOMContentLoaded', autoScrollQueue);
 </script>

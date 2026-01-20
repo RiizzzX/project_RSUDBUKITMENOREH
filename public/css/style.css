@@ -37,7 +37,16 @@ body {
   line-height: 1.6;
   font-size: 16px;
   overflow: hidden;
+  margin: 0;
   height: 100vh;
+}
+
+/* ===== PAGE WRAPPER ===== */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* ===== HEADER ===== */
@@ -94,11 +103,29 @@ body {
   min-width: 200px;
 }
 
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--dark-bg);
+  color: white;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
 /* ===== MAIN CONTENT ===== */
 .main-container-full {
+  flex: 1;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .content-section {
@@ -396,14 +423,15 @@ body {
 /* ===== ANTRIAN DISPLAY PAGE ===== */
 .antrian-container {
   display: flex;
-  gap: 1.2rem;
-  padding: 1.2rem;
+  gap: 1.5rem;
+  padding: 1rem;
   margin-top: 0;
   width: 100%;
   background: linear-gradient(135deg, #f5f7fa 0%, #eef2f5 100%);
-  height: calc(100vh - 100px);
-  overflow: hidden;
+  height: 100%;
   box-sizing: border-box;
+  align-items: stretch;
+  overflow: hidden;
 }
 
 .farmasi-section {
@@ -411,6 +439,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  min-width: 0;
 }
 
 .farmasi-card {
@@ -499,7 +528,6 @@ body {
   font-size: 13px;
   color: #7f8c8d;
   font-weight: 500;
-}
   font-size: 36px;
   font-weight: 800;
   color: #2c3e50;
@@ -515,7 +543,7 @@ body {
 
 /* Antrian List Section */
 .antrian-list-section {
-  flex: 1.2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   background: white;
@@ -523,6 +551,7 @@ body {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+  min-width: 0;
 }
 
 .antrian-list-header {
@@ -532,6 +561,7 @@ body {
   margin-bottom: 0.8rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid #e8f3f1;
+  flex-shrink: 0;
 }
 
 .antrian-list-header h2 {
@@ -555,9 +585,16 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
-  overflow-y: hidden;
-  padding-right: 0;
-  max-height: 100%;
+  overflow: hidden;
+  padding-right: 0.5rem;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  will-change: transform;
 }
 
 .antrian-list::-webkit-scrollbar {
@@ -694,79 +731,10 @@ body {
   border-top: 1px solid #ecf0f1;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .antrian-container {
-    gap: 2rem;
-  }
-  
-  .farmasi-section {
-    flex: 0 0 380px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .antrian-container {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .farmasi-section {
-    flex: none;
-    max-width: 100%;
-  }
-  
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .antrian-container {
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-  
-  .farmasi-card {
-    padding: 1.5rem;
-    min-height: auto;
-  }
-  
-  .antrian-number {
-    font-size: 56px;
-  }
-  
-  .antrian-list-section {
-    padding: 1.5rem;
-  }
-  
-  .antrian-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .antrian-item-status {
-    width: 100%;
-  }
-  
-  .status-btn {
-    width: 100%;
-    padding: 0.75rem 1rem;
-  }
-  
+/* Responsive Design for Stats */
+@media (max-width: 576px) {
   .stats-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .antrian-list-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  
-  .antrian-count {
-    width: 100%;
-    text-align: right;
   }
 }
 
@@ -858,11 +826,160 @@ body {
   display: inline-block;
 }
 
+/* ===== RUNNING TEXT ===== */
+.running-text-container {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  overflow: hidden;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.running-text {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 20s linear infinite;
+}
+
+.running-text span {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding-right: 50px;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(100%);
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+/* ===== RESPONSIVE ANTRIAN ===== */
+@media (max-width: 1200px) {
+  .antrian-container {
+    gap: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .antrian-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .farmasi-section,
+  .antrian-list-section {
+    flex: none;
+    width: 100%;
+  }
+  
+  .farmasi-section {
+    max-width: 100%;
+  }
+  
+  .antrian-list {
+    max-height: 400px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .antrian-container {
+    padding: 0.5rem;
+    gap: 0.8rem;
+  }
+  
+  .farmasi-card {
+    padding: 1rem;
+    min-height: auto;
+  }
+  
+  .farmasi-header {
+    font-size: 16px;
+  }
+  
+  .farmasi-title {
+    font-size: 18px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .antrian-number {
+    font-size: 48px !important;
+  }
+  
+  .antrian-number-display {
+    max-width: 180px;
+  }
+  
+  .antrian-list-section {
+    padding: 0.8rem;
+  }
+  
+  .antrian-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .antrian-list-header h2 {
+    font-size: 16px;
+  }
+  
+  .antrian-item {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.8rem;
+  }
+  
+  .antrian-item-number {
+    flex: none;
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+  
+  .antrian-item-status {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .status-btn {
+    width: 100%;
+    padding: 0.6rem 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .stat-number {
+    font-size: 22px;
+  }
+  
+  .running-text span {
+    font-size: 0.9rem;
+  }
+  
+  .footer {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
   }
 }
